@@ -10,6 +10,7 @@ public class SysUserInfo {
     @Id
     private Long sysUserId;
     private String sysUserName;
+    private String sysUserPassword;
     private Integer sysUserAge;
     private Integer sysUserSex;
     private String sysUserPhone;

@@ -4,6 +4,7 @@
     <resultMap id="BaseResultMap" type="com.jiang.demo.sys.user.entity.SysUserInfo">
         <result column="sys_user_id" javaType="java.lang.Long" jdbcType="BIGINT" property="sysUserId" />
         <result column="sys_user_name" javaType="java.lang.String" jdbcType="VARCHAR" property="sysUserName" />
+        <result column="sys_user_password" javaType="java.lang.String" jdbcType="VARCHAR" property="sysUserPassword" />
         <result column="sys_user_age" javaType="java.lang.Integer" jdbcType="INTEGER" property="sysUserAge" />
         <result column="sys_user_sex" javaType="java.lang.Integer" jdbcType="INTEGER" property="sysUserSex" />
         <result column="sys_user_phone" javaType="java.lang.String" jdbcType="VARCHAR" property="sysUserPhone" />
@@ -13,17 +14,11 @@
         <result column="sys_user_qq" javaType="java.lang.String" jdbcType="VARCHAR" property="sysUserQq" />
         <result column="sys_user_wx" javaType="java.lang.String" jdbcType="VARCHAR" property="sysUserWx" />
         <result column="sys_user_lock" javaType="java.lang.Integer" jdbcType="INTEGER" property="sysUserLock" />
-        <result column="sys_lock_date" javaType="java.util.Date" jdbcType="DATETIME" property="sysLockDate" />
+        <result column="sys_lock_date" javaType="java.util.Date" jdbcType="TIMESTAMP" property="sysLockDate" />
         <result column="sys_user_expired" javaType="java.lang.Integer" jdbcType="INTEGER" property="sysUserExpired" />
-        <result column="sys_expired_date" javaType="java.util.Date" jdbcType="DATETIME" property="sysExpiredDate" />
+        <result column="sys_expired_date" javaType="java.util.Date" jdbcType="TIMESTAMP" property="sysExpiredDate" />
         <result column="sys_user_type" javaType="java.lang.Integer" jdbcType="INTEGER" property="sysUserType" />
         <result column="sys_user_sort" javaType="java.lang.Integer" jdbcType="INTEGER" property="sysUserSort" />
     </resultMap>
-
-    <select id="findAll" resultType="com.jiang.demo.sys.user.entity.SysUserInfo">
-        select sys_user_id,sys_user_name,sys_user_age from sys_user_info
-    </select>
-
-
 
 </mapper>

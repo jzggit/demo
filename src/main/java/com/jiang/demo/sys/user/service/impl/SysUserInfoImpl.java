@@ -16,7 +16,7 @@ public class SysUserInfoImpl implements SysUserInfoService {
     private SysUserInfoMapper sysUserInfoMapper;
     @Override
     public List<SysUserInfo> findAll() {
-        List<SysUserInfo> list = sysUserInfoMapper.findAll();
+        List<SysUserInfo> list = sysUserInfoMapper.selectAll();
         log.info("list:{}",list.size());
         return list;
     }
