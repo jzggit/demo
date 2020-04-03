@@ -58,7 +58,7 @@
         <javaClientGenerator targetPackage="com.jiang.demo.mapper" targetProject="src/main/java" type="XMLMAPPER">
         </javaClientGenerator>
 
-        <table tableName="sys_zoning_table"
+        <table tableName="sys_dictionary"
                enableInsert="true"
                enableCountByExample="true"
                enableUpdateByExample="true" enableUpdateByPrimaryKey="true"

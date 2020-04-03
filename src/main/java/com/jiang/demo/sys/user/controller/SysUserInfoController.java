@@ -2,6 +2,8 @@ package com.jiang.demo.sys.user.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.jiang.common.BaseException;
 import com.jiang.common.ErrorType;
 import com.jiang.common.Result;
@@ -27,11 +29,23 @@ public class SysUserInfoController {
     @Autowired
     private SysUserInfoMapper sysUserInfoMapper;
 
-    @GetMapping("/findAll")
-    public Result findAll(){
-        List<SysUserInfo> list = sysUserInfoService.findAll();
-        log.info("取到数据:{}",list.get(0).getSysUserName());
-        return Result.success(list);
+    @PostMapping("/findAll")
+    public Result findAll(@RequestBody Map<String,Object> jsonMap){
+        log.info("参数:{}",JSONObject.toJSONString(jsonMap));
+        Integer pageNum = jsonMap.get("page")==null?0: (Integer) jsonMap.get("page");
+        Integer pageSize = jsonMap.get("limit")==null?0: (Integer) jsonMap.get("limit");
+        String sysUserName = jsonMap.get("sysUserName")==null?null: (String) jsonMap.get("sysUserName");
+        Integer sysUserSex = jsonMap.get("sysUserSex")==null?null: (Integer) jsonMap.get("sysUserSex");
+        if(!StringUtils.isEmpty(sysUserName)){
+            sysUserName = sysUserName+"%";
+        }
+        Example example = new Example(SysUserInfo.class);
+        example.createCriteria().andLike("sysUserName",sysUserName).andEqualTo("sysUserSex",sysUserSex);
+        PageHelper.startPage(pageNum,pageSize);
+        List<SysUserInfo> list = sysUserInfoService.findAll(example);
+        PageInfo<SysUserInfo> pageInfo = new PageInfo<SysUserInfo>(list);
+        log.info("取到数据:{}",JSONObject.toJSONString(pageInfo));
+        return Result.success(pageInfo);
     }
 
     @PostMapping("/addUser")

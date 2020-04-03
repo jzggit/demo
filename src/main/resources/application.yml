@@ -20,3 +20,9 @@ mybatis:
 #logging:
 #  level:
 #    com.jiang.demo.sys.user.dao : debug
+
+pagehelper:
+  helper-dialect: MYSQL
+  reasonable: true
+  support-methods-arguments: true
+  params=count: countSql

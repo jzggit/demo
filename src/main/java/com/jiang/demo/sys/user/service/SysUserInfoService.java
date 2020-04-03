@@ -3,6 +3,7 @@ package com.jiang.demo.sys.user.service;
 
 import com.jiang.demo.sys.user.entity.SysUserInfo;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -11,5 +12,5 @@ import java.util.List;
  */
 @Service
 public interface SysUserInfoService {
-    List<SysUserInfo> findAll();
+    List<SysUserInfo> findAll(Example example);
 }

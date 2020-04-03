@@ -7,6 +7,7 @@ import com.jiang.demo.sys.user.service.SysUserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 @Slf4j
@@ -15,8 +16,8 @@ public class SysUserInfoImpl implements SysUserInfoService {
     @Autowired
     private SysUserInfoMapper sysUserInfoMapper;
     @Override
-    public List<SysUserInfo> findAll() {
-        List<SysUserInfo> list = sysUserInfoMapper.selectAll();
+    public List<SysUserInfo> findAll(Example example) {
+        List<SysUserInfo> list = sysUserInfoMapper.selectByExample(example);
         log.info("list:{}",list.size());
         return list;
     }
