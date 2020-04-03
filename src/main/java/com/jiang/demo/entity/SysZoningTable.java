@@ -1,6 +1,8 @@
 package com.jiang.demo.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "sys_zoning_table")
@@ -55,9 +57,11 @@ public class SysZoningTable implements Serializable {
      */
     private Integer sort;
 
+    private List<SysZoningTable> children = new ArrayList<SysZoningTable>();
+
     private static final long serialVersionUID = 1L;
 
-    public SysZoningTable(Long id, Long pid, String path, String code, String codeName, Integer codeType, Integer isLeaf, Integer isExpand, Integer sort) {
+    public SysZoningTable(Long id, Long pid, String path, String code, String codeName, Integer codeType, Integer isLeaf, Integer isExpand, Integer sort,List<SysZoningTable> children) {
         this.id = id;
         this.pid = pid;
         this.path = path;
@@ -67,6 +71,7 @@ public class SysZoningTable implements Serializable {
         this.isLeaf = isLeaf;
         this.isExpand = isExpand;
         this.sort = sort;
+        this.children = children;
     }
 
     public SysZoningTable() {
@@ -233,5 +238,13 @@ public class SysZoningTable implements Serializable {
      */
     public void setSort(Integer sort) {
         this.sort = sort;
+    }
+
+    public List<SysZoningTable> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<SysZoningTable> children) {
+        this.children = children;
     }
 }
